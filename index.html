@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('postForm');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('postTitle').value;
+            const date = document.getElementById('postDate').value;
+            const content = document.getElementById('postContent').value;
+
+            const newPost = document.createElement('article');
+            newPost.innerHTML = `
+                <h2>${title}</h2>
+                <p>${date}</p>
+                <p>${content}</p>
+            `;
+
+            document.querySelector('main').prepend(newPost);
+
+            form.reset();
+        });
+    });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Blog</h1>
+    </header>
+    <nav>
+        <!-- Navigation links can go here -->
+    </nav>
+    <aside>
+        <h3>Add a New Post</h3>
+        <form id="postForm">
+            <input type="text" id="postTitle" placeholder="Title" required>
+            <input type="date" id="postDate" required>
+            <textarea id="postContent" placeholder="Content" required></textarea>
+            <button type="submit">Add Post</button>
+        </form>
+    </aside>
+    
+    <main>
+        <!-- Dynamic posts will be prepended here -->
+    </main>
+    
+    <footer>
+        <p>Copyright © Your Name 2024</p>
+    </footer>
+</body>
+</html>
